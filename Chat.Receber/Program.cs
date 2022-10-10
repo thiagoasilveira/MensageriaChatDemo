@@ -7,18 +7,12 @@ namespace Chat.Receber
     class Program
     {
         private static MessageBus bus;
-        private static string usuario = "";
+        private static string usuario = "todos";
 
         static void Main(string[] args)
         {
-            while (string.IsNullOrEmpty(usuario))
-            {
-                Console.WriteLine("Digite o usuário: ");
-                usuario = Console.ReadLine();
-            }
-
             Console.Clear();
-            Console.WriteLine($"Aguardando mensagens para {usuario}");
+            Console.WriteLine($"Aguardando mensagens");
 
             PreparaAmbiente();
             Console.ReadKey();
@@ -40,13 +34,12 @@ namespace Chat.Receber
 
             if (remetente?.ToLower() == "todos")
             {
-                Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine($"Pública: {mensagem}");
+                Console.WriteLine($"{DateTime.Now:T} | {mensagem}");
             }
             else
             {
                 Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine($"Privada: {mensagem}");
+                Console.WriteLine($"{mensagem}");
             }
 
             Console.ForegroundColor = ConsoleColor.White;

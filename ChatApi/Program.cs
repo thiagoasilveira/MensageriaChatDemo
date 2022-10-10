@@ -1,6 +1,10 @@
+using DataC.MessageBus;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+
+builder.Services.AddSingleton((IMessageBus)new MessageBus("amqps://lcevdixb:4mudmhFXAyRvfPphwx9myckUSpkBGe54@toad.rmq.cloudamqp.com/lcevdixb", "Chat_API"));
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
